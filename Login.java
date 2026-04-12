@@ -36,7 +36,7 @@ public class Login {
     public boolean checkCellPhoneNumber(String number) {
         return number != null && number.matches("\\+27\\d{9}");
     }
-    //Register user
+    //Registers the user
     public String registerUser(String username, String password) {
         
         if (!checkUserName(username)) {
@@ -58,7 +58,7 @@ public class Login {
                 this.username.equals(username) &&
                 this.password.equals(password);
     }
-    //Login message
+    //Login message at the end
     public String returnLoginStatus(boolean loginSuccess) {
         
         if (loginSuccess) {
