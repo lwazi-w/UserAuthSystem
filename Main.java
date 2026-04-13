@@ -15,7 +15,7 @@ public class Main {
         //Create Login object to accesss methods
         Login login = new Login();
         
-        //RESITRATION
+        //REGISTRATION
         System .out.println("=== Registration ===");
         
         //Get user's first name 
@@ -34,7 +34,7 @@ public class Main {
         System.out.print("Enter password: ");
         String password = input.nextLine();
         
-        //Get password
+        //Get cell phone number
         System.out.print("Enter cell phone number (+27):");
         String phone = input.nextLine();
         
@@ -44,7 +44,7 @@ public class Main {
             return; //Stops program if invalid
         }
         
-        //Phone success message 
+        //Cell Phone success message 
         System.out.println("Cell phone number successfully added.");
         
         
@@ -55,7 +55,7 @@ public class Main {
         String registerMessage = login.registerUser(username, password);
         System.out.println(registerMessage);
         
-        //Stop if registration failed
+        //Stops if registration failed
        if (!registerMessage.equals("Username successfully captured.")) {
            return;
        }
@@ -64,6 +64,7 @@ public class Main {
        System.out.println("\n=== Login ===");
        
        //Asks user to login
+        //3 attemps
        int attemps = 3;
        boolean success = false;
        
