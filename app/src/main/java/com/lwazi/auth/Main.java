@@ -96,18 +96,27 @@ public class Main {
                "+2718693002",
                "Hi Mike can you join us for dinner tonight"
        );
+       Message userMessage = testMessage;
+       
+       int choice = 0;
+       while(choice != 7){
        
        //Welcome message for Part 2
        System.out.println("\nWelcome to QuickChat");
        
        //Displays the QuickChat menu options
-       System.out.println("\n1. Send Messages");
+       System.out.println("1. Send Messages");
        System.out.println("2. Show recently sent messages");
-       System.out.println("3. Quit");
+       System.out.println("3. Search Message by ID");
+       System.out.println("4. Stored Messages");
+       System.out.println("5. Search by Recipient");
+       System.out.println("6. Delete Message by Hash");
+       System.out.println("7. Display Report");
+       System.out.println("8. Quit");
        
        //Allows the user to select a menu option
        System.out.print("\nChoose an option: ");
-       int choice = input.nextInt();
+       choice = input.nextInt();
        
        //Process the user's menu selection
        switch (choice){
@@ -122,7 +131,7 @@ public class Main {
                System.out.print("Enter your message: ");
                String messageText = input.nextLine();
                
-               Message userMessage = new Message(
+               userMessage = new Message(
                        "1234567890",
                        recipient,
                        messageText
@@ -143,6 +152,9 @@ public class Main {
                
                System.out.println(userMessage.sendMessage(sendChoice));
                
+               System.out.println("\nStored Messages:");
+               System.out.println(userMessage.displayStoredMessages());
+               
                if (sendChoice == 1){
                    System.out.println(userMessage.printMessages());
                    
@@ -155,20 +167,81 @@ public class Main {
                break;
                
            case 2:
-               System.out.println("Coming soon.");
+             
+               System.out.println("\nRecently Sent Messages: ");
+               System.out.println(userMessage.displaySentMessages());
+               
                break;
                
            case 3:
-               System.out.println("Goodbye.");
+               
+               input.nextLine();
+               
+               System.out.println("Enter Message ID to search: ");
+               String searchID = input.nextLine();
+               
+               System.out.println(userMessage.searchByMessageID(searchID));
+               
+               break;
+               
+           case 4:
+               
+               System.out.println("\nStored Messages:");
+               System.out.println(userMessage.displayStoredMessages());
+               
+               System.out.println("\nMessage Hashes:");
+               System.out.println(userMessage.displayMessageHashes());
+                
+               System.out.println("\nMessage IDs:");
+               System.out.println(userMessage.displayMessageIDs());
+               
+               System.out.println("\nLongest Message:");
+               System.out.println(userMessage.displayLongestMessage());
+               
+               break;
+               
+           case 5:
+               
+               input.nextLine();
+               
+               System.out.println("Enter recipient number: ");
+               String recipientSearch = input.nextLine();
+               
+                System.out.println(userMessage.searchByRecipient(recipientSearch));
+                
+               break;
+               
+           case 6:
+               
+               input.nextLine();
+                       
+                System.out.println("Enter message hash: ");
+                String hash = input.nextLine();
+                
+                System.out.println(userMessage.deleteMessageByHash(hash));
+                
+                break;
+                
+           case 7:
+               
+               System.out.println(userMessage.displayReport());
+               break;
+               
+           case 8:
+               
+               System.exit(0);
                break;
                
            default:
                System.out.println("Invalid option.");
        }
+       
       
-       //close scanner
-       input.close();
+       //input.close();
+       
        
         
     }
+}
+    
 }
